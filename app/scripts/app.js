@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rockitSiteApp', [
+angular.module('rockit', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
