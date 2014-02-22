@@ -4,15 +4,24 @@ angular.module('rockit', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'dashboard',
+  'nodes',
+  'mixes',
+  'settings'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+
+.service('rockitConfigure', function() {
+
+  this.initialize = function() {
+    this.useMocks = false;
+  }
+
+  this.initialize();
+})
+
+.config(function ($routeProvider) {
+  $routeProvider.otherwise({
+    redirectTo: '/'
   });
+});
