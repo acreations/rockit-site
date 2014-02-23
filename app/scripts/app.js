@@ -11,17 +11,21 @@ angular.module('rockit', [
   'settings'
 ])
 
-.service('rockitConfigure', function() {
+.service('configuration', function() {
 
   this.initialize = function() {
-    this.useMocks = false;
-  }
+    this.serverUrl = 'http://localhost:8000/rockit/';
+  };
 
   this.initialize();
 })
 
 .config(function ($routeProvider) {
-  $routeProvider.otherwise({
-    redirectTo: '/'
-  });
-});
+  $routeProvider.otherwise({ redirectTo: '/' });
+})
+
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  //$httpProvider.defaults.headers.post['X-CSRFToken'] = $('input[name=csrfmiddlewaretoken]').val();
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}]);
