@@ -1,0 +1,50 @@
+[
+    {
+        "url": "http://localhost:8000/rockit/nodes/1/", 
+        "uuid": "dba4f65a-e1f6-4022-b375-175e28716df5", 
+        "name": "undefined", 
+        "association": {
+            "url": "http://localhost:8000/rockit/associations/20/", 
+            "name": "Razberry", 
+            "description": "Communicate with Z-Wave devices using Razberry", 
+            "namespace": "rockit.plugins.razberry", 
+            "entry": "razberry", 
+            "addable": true, 
+            "when_addable": false, 
+            "then_addable": false, 
+            "date_added": "2014-02-07T00:00:00Z"
+        }
+    }, 
+    {
+        "url": "http://localhost:8000/rockit/nodes/2/", 
+        "uuid": "c0110ac6-8e0e-448f-90af-d7988fc2a57a", 
+        "name": "undefined", 
+        "association": {
+            "url": "http://localhost:8000/rockit/associations/20/", 
+            "name": "Razberry", 
+            "description": "Communicate with Z-Wave devices using Razberry", 
+            "namespace": "rockit.plugins.razberry", 
+            "entry": "razberry", 
+            "addable": true, 
+            "when_addable": false, 
+            "then_addable": false, 
+            "date_added": "2014-02-07T00:00:00Z"
+        }
+    }, 
+    {
+        "url": "http://localhost:8000/rockit/nodes/3/", 
+        "uuid": "6d7037ec-a8d7-47b5-8316-83aa6adf4a48", 
+        "name": "undefined", 
+        "association": {
+            "url": "http://localhost:8000/rockit/associations/20/", 
+            "name": "Razberry", 
+            "description": "Communicate with Z-Wave devices using Razberry", 
+            "namespace": "rockit.plugins.razberry", 
+            "entry": "razberry", 
+            "addable": true, 
+            "when_addable": false, 
+            "then_addable": false, 
+            "date_added": "2014-02-07T00:00:00Z"
+        }
+    }
+]

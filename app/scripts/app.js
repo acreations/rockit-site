@@ -16,6 +16,7 @@ angular.module('rockit', [
 
   this.initialize = function() {
     this.serverUrl = 'http://localhost:8000/rockit/';
+    this.mocksEnabled = true;
   };
 
   this.initialize();
