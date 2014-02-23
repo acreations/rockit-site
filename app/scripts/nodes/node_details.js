@@ -5,13 +5,13 @@ angular.module('nodes', [
 ])
 
 .config(function ($routeProvider) {
-  $routeProvider.when('/nodes', {
+  $routeProvider.when('/nodes/:id', {
     templateUrl: 'views/pages/nodes.html',
-    controller:  'NodesCtrl'
+    controller:  'NodeDetailCtrl'
   });
 })
 
-.controller('NodesCtrl', ['$scope', 'nodesRepository', function ($scope, nodesRepository) {
+.controller('NodeDetailCtrl', ['$scope', 'nodesRepository', function ($scope, nodesRepository) {
 
   var repository  = {};
 

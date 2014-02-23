@@ -6,12 +6,15 @@ angular.module('services', [
 
 .factory('nodesRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
 
+  var serviceUrl = configuration.serverUrl + 'nodes';
+
   var urls = {
-    'list': configuration.serverUrl + 'nodes'
+    'list': serviceUrl,
+    'get': serviceUrl
   }
 
   if(configuration.mocksEnabled) {
-    urls.list = '/mocks/nodes/nodes.json';
+    urls.list = '/mocks/nodes_list.json';
   }
 
 
