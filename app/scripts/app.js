@@ -8,7 +8,8 @@ angular.module('rockit', [
   'dashboard',
   'nodes',
   'mixes',
-  'settings'
+  'settings',
+  'services'
 ])
 
 .service('configuration', function() {
@@ -28,4 +29,12 @@ angular.module('rockit', [
   $httpProvider.defaults.useXDomain = true;
   //$httpProvider.defaults.headers.post['X-CSRFToken'] = $('input[name=csrfmiddlewaretoken]').val();
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}])
+
+.controller('RockitCtrl', ['$scope', '$location', function ($scope, $location) {
+
+  $scope.go = function(path) {
+    $location.path(path);
+  };
+
 }]);

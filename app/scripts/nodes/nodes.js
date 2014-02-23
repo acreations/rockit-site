@@ -11,33 +11,22 @@ angular.module('nodes', [
   });
 })
 
-.factory('nodesRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
-
-  return {
-    get: function() {
-      var url = configuration.serverUrl + 'nodes';
-      var deferred = $q.defer();
-
-      $http.get(url).success(function(response) {
-        console.log('response', response);
-
-        deferred.resolve('Hello nodes');
-      });
-
-      return deferred.promise;
-    }
-  };
-}])
-
 .controller('NodesCtrl', ['$scope', 'nodesRepository', function ($scope, nodesRepository) {
 
-  this.initialize = function() {
-    nodesRepository.get().then(
+  var repository  = {};
+
+  this.getNodes = function() {
+    nodesRepository.list().then(
       function(data) {
-        $scope.hello = data;
+        repository.nodes = data;
+        $scope.nodes = repository.nodes;
       });
   };
 
-  this.initialize();
+  this.onCreate = function() {
+    this.getNodes();
+  };
+
+  this.onCreate();
 
 }]);

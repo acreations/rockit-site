@@ -1,5 +1,13 @@
- <div class="jumbotron">
-    <h1 data-ng-bind="hello"></h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
-</div>
+<h1>Nodes</h1>
+
+<ul class="media-list">
+  <li class="media" data-ng-repeat="node in nodes" ng-click="go('settings')">
+    <a class="pull-left">
+      <img class="media-object" src="http://placehold.it/70x70" alt="">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading" data-ng-bind="node.name"></h4>
+      <span data-ng-bind="node.association.name"></span>
+    </div>
+  </li>
+</ul>

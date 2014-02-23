@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="rockit">
+  <body ng-app="rockit" data-ng-controller="RockitCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -37,7 +37,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/dashboard">Dashboard</a></li>
             <li><a href="#/nodes">Nodes</a></li>
             <li><a href="#/mixes">Mixes</a></li>
             <li><a href="#/settings">Settings</a></li>
@@ -73,6 +72,7 @@
     <script src="scripts/nodes/nodes.js"></script>
     <script src="scripts/mixes/mixes.js"></script>
     <script src="scripts/settings/settings.js"></script>
+    <script src="scripts/services/nodes.js"></script>
     <!-- endbuild -->
 </body>
 </html>
