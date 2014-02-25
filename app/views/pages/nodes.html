@@ -1,27 +1,26 @@
-<h1>Nodes</h1>
-
-<ul class="media-list">
-  <li class="media" data-ng-repeat="node in nodes" ng-click="go('nodes')">
-    <a class="pull-left">
-      <img class="media-object" src="http://placehold.it/70x70" alt="">
-    </a>
-    <div class="media-body">
-      <h4 class="media-heading" data-ng-bind="node.name"></h4>
-      <span data-ng-bind="node.association.name"></span>
-
-      <div class="dropdown">
-  <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
-    Dropdown
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
-</div>        
+<div class="container-fluid">
+    <div class="container-fluid" data-ng-repeat="group in presentation.groups">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 text-center">
+                            <img src="http://placehold.it/100x100" alt="bootsnipp" class="img-responsive" />
+                            <h4><small data-ng-bind="node.association.name"></small></h4>
+                        </div>
+                        <div class="col-xs-9 col-md-9 section-box">
+                            <h3 data-ng-bind="node.name"></h3>
+                            <p>&nbsp;</p>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-6 text-right">DD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
     </div>
-  </li>
-</ul>
+</div>

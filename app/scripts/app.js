@@ -22,6 +22,10 @@ angular.module('rockit', [
   this.initialize();
 })
 
+.config(function ($logProvider) {
+  $logProvider.debugEnabled(true);
+})
+
 .config(function ($routeProvider) {
   $routeProvider.otherwise({ redirectTo: '/' });
 })

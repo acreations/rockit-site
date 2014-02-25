@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 text-center">
+                    <img src="http://placehold.it/100x100" alt="" class="img-responsive" />
+                    <h4><small data-ng-bind="node.association.name"></small></h4>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <h3 data-ng-bind="node.name"></h3>
+                    <hr />
+                    <div class="row-fluid text-right">More information later</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="page-header">
+            <h3><small>Details information</small></h3>
+        </div>
+        <div class="col-sm-3 col-md-3" ng-repeat="detail in node.detailed.data">
+            <p>
+                <strong><span data-ng-bind="detail.title"></span></strong><br>
+                <span data-ng-bind="detail.value"></span>
+            </p>
+        <div>
+    </div>
+</div>
