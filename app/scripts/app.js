@@ -5,6 +5,7 @@ angular.module('rockit', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'pascalprecht.translate',
   'dashboard',
   'nodes',
   'mixes',
@@ -29,6 +30,15 @@ angular.module('rockit', [
 .config(function ($routeProvider) {
   $routeProvider.otherwise({ redirectTo: '/' });
 })
+
+.config(['$translateProvider', function ($translateProvider) {
+  var translations = {
+    device_type: 'Device type'
+  };
+  $translateProvider
+    .translations('en', translations)
+    .preferredLanguage('en');
+}])
 
 .config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.useXDomain = true;

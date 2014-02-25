@@ -31,7 +31,7 @@
         </div>
         <div class="col-sm-3 col-md-3" ng-repeat="detail in node.detailed.data">
             <p>
-                <strong><span data-ng-bind="detail.title"></span></strong><br>
+                <strong>{{ detail.title | translate }}</strong><br>
                 <span data-ng-bind="detail.value"></span>
             </p>
         <div>
