@@ -11,13 +11,17 @@ angular.module('razberry', [
   });
 })
 
-.controller('RazberryCtrl', ['$scope', '$log', '$routeParams', '$sce', 'genericRepository',
-  function ($scope, $log, $routeParams, $sce, genericRepository) {
+.controller('RazberryCtrl', ['$scope', '$log', '$routeParams', '$translatePartialLoader', '$translate', '$sce', 'genericRepository',
+  function ($scope, $log, $routeParams, $translatePartialLoader, $translate, $sce, genericRepository) {
 
   var repository = {};
 
   var onCreate = function() {
-    $log.debug('On create :: Razberry controller');
+    $log.debug(':: Created Razberry controller');
+
+    $translatePartialLoader.addPart('nodes-razberry');
+    $translate.refresh();
+
     $sce.trustAsUrl($routeParams.node);
 
     genericRepository.get($routeParams.node).then(

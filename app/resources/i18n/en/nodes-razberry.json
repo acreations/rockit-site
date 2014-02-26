@@ -1,0 +1,15 @@
+{
+  "application": "Application",
+  "awaken": "Awaken",
+  "beaming": "Beaming",
+  "failed": "Failed",
+  "isListening": "Listening enabled",
+  "device_type": "Device type",
+  "manufacturer_id": "Manufacturer ID",
+  "manufacturer_name": "Manufacturer name",
+  "routing": "Routing enabled",
+  "sdk": "SDK",
+  "SwitchBinary": "Switch",
+  "zw_library": "ZWave library",
+  "zw_protocol": "ZWave version"
+}

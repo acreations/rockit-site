@@ -32,12 +32,10 @@ angular.module('rockit', [
 })
 
 .config(['$translateProvider', function ($translateProvider) {
-  var translations = {
-    device_type: 'Device type'
-  };
-  $translateProvider
-    .translations('en', translations)
-    .preferredLanguage('en');
+  $translateProvider.useLoader('$translatePartialLoader', {
+    urlTemplate: '/resources/i18n/{lang}/{part}.json'
+  });
+  $translateProvider.preferredLanguage('en');
 }])
 
 .config(['$httpProvider', function($httpProvider) {
