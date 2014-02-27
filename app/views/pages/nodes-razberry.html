@@ -20,10 +20,8 @@
     <div class="row-fluid">
         <div class="page-header"><h3><small>Details information</small></h3></div>
         <div class="col-sm-3 col-md-3" ng-repeat="detail in node.detailed.data">
-            <p>
-                <strong>{{ detail.title | translate }}</strong><br>
-                <span data-ng-bind="detail.value"></span>
-            </p>
+            <h5><strong>{{ detail.title | translate }}</strong></h5>
+            <span data-ng-bind="detail.value"></span>
         </div>
     </div>
 </div>
@@ -33,10 +31,11 @@
         <div class="page-header">
             <h3><small>Commands</small></h3>
         </div>
-        <div class="col-sm-3 col-md-3" ng-repeat="command in node.commands.data">
-            <p>
-                <strong>{{ command.name | translate }}</strong><br>
-            </p>
+        <div class="col-sm-4 col-md-4 text-center" ng-repeat="command in node.commands.data">
+            <h5><strong>{{ command.name | translate }}</strong></h5>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-off"></span> On
+            </button>
         </div>
     </div>
 </div>
