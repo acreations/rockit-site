@@ -16,6 +16,24 @@ angular.module('razberry', [
 
   var repository = {};
 
+  $scope.onSelectedCommand = function(command, value) {
+    $log.debug(':: Selected command with value', value);
+
+    genericRepository.get(command.urls[value]).then(
+      function(data) {
+        $log.debug('Generic repository :: success', data);
+
+        command.values.current = data.data;
+
+      }, function(reason) {
+        $log.warn('Generic repository :: reject', reason);
+      }, function(update) {
+        $log.info('Generic repository :: updates', update);
+      }
+    );
+
+  };
+
   var onCreate = function() {
     $log.debug(':: Created Razberry controller');
 
