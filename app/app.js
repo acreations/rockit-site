@@ -6,6 +6,8 @@ angular.module('rockit', [
   'ngSanitize',
   'ngRoute',
   'pascalprecht.translate',
+  'ui.bootstrap',
+  'common',
   'dashboard',
   'nodes',
   'mixes',
@@ -17,7 +19,7 @@ angular.module('rockit', [
 
   this.initialize = function() {
     this.serverUrl = 'http://localhost:8000/rockit/';
-    this.mocksEnabled = true;
+    this.mocksEnabled = false;
   };
 
   this.initialize();
