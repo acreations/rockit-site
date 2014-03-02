@@ -6,7 +6,7 @@ angular.module('razberry', [
 
 .config(function ($routeProvider) {
   $routeProvider.when('/nodes/razberry/:node*', {
-    templateUrl: 'views/pages/nodes-razberry.html',
+    templateUrl: 'nodes/razberry/razberry.html',
     controller:  'RazberryCtrl'
   });
 })

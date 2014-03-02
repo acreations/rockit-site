@@ -33,7 +33,7 @@ angular.module('services', [
   var serviceUrl = configuration.serverUrl + 'nodes';
 
   if(configuration.mocksEnabled) {
-    serviceUrl = '/mocks/nodes_list.json';
+    serviceUrl = '/nodes/nodes-list.json';
   }
 
   return {

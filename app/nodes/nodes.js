@@ -6,7 +6,7 @@ angular.module('nodes', [
 
 .config(function ($routeProvider) {
   $routeProvider.when('/nodes', {
-    templateUrl: 'views/pages/nodes.html',
+    templateUrl: 'nodes/nodes.html',
     controller:  'NodesCtrl'
   });
 })
