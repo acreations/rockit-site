@@ -11,24 +11,24 @@ angular.module('razberry', [
   });
 })
 
-.controller('RazberryCtrl', ['$scope', '$log', '$routeParams', '$translatePartialLoader', '$translate', '$sce', 'genericRepository',
-  function ($scope, $log, $routeParams, $translatePartialLoader, $translate, $sce, genericRepository) {
+.controller('RazberryCtrl', ['$scope', '$log', '$routeParams', '$translatePartialLoader', '$translate', '$sce', 'repository',
+  function ($scope, $log, $routeParams, $translatePartialLoader, $translate, $sce, repository) {
 
-  var repository = {};
+  var responses = {};
 
   $scope.activateCommand = function(command, value) {
     $log.debug(':: Selected command with value', value);
 
-    genericRepository.get(command.urls[value]).then(
+    repository.get(command.urls[value]).then(
       function(data) {
-        $log.debug('Generic repository :: success', data);
+        $log.debug('Repository :: success', data);
 
         command.values.current = data.data;
 
       }, function(reason) {
-        $log.warn('Generic repository :: reject', reason);
+        $log.warn('Repository :: reject', reason);
       }, function(update) {
-        $log.info('Generic repository :: updates', update);
+        $log.info('Repository:: updates', update);
       }
     );
   };
@@ -44,21 +44,21 @@ angular.module('razberry', [
   $scope.editSave = function() {
     $log.debug(':: Update node ',$scope.edit);
 
-    $scope.edit.association = repository.node.association;
+    $scope.edit.association = responses.node.association;
 
     genericRepository.update($scope.node.url, $scope.edit).then(
       function(data) {
         $log.debug('Repository :: Update success ', data);
 
-        repository.node.name = data.name;
-        repository.node.association = data.association;
+        responses.node.name = data.name;
+        responses.node.association = data.association;
 
         $scope.editReset();
 
       }, function(reason) {
-        $log.warn('Generic repository :: reject', reason);
+        $log.warn('Repository :: reject', reason);
       }, function(update) {
-        $log.info('Generic repository :: updates', update);
+        $log.info('Repository :: updates', update);
       }
     );
   };
@@ -75,13 +75,13 @@ angular.module('razberry', [
 
     $sce.trustAsUrl($routeParams.node);
 
-    genericRepository.get($routeParams.node).then(
+    repository.get($routeParams.node).then(
       function(data) {
         $log.debug('Repository :: success', data);
 
-        repository.node = data;
+        responses.node = data;
 
-        $scope.node = repository.node;
+        $scope.node = responses.node;
         $scope.editReset();
 
       }, function(reason) {

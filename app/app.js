@@ -50,4 +50,28 @@ angular.module('rockit', [
     $location.path(path);
   };
 
+}])
+
+.factory('repository', ['$q', '$http', function($q, $http) {
+
+  return {
+    get: function(url) {
+      var deferred = $q.defer();
+
+      $http.get(url).success(function(response) {
+        deferred.resolve(response);
+      });
+
+      return deferred.promise;
+    },
+    update: function(url, data) {
+      var deferred = $q.defer();
+
+      $http.put(url, data).success(function(response) {
+        deferred.resolve(response);
+      });
+
+      return deferred.promise;
+    }
+  };
 }]);
