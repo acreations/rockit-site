@@ -6,7 +6,7 @@ angular.module('mixes', [
 
 .config(function ($routeProvider) {
   $routeProvider.when('/mixes', {
-    templateUrl: 'views/pages/mixes.html',
+    templateUrl: 'mixes/mixes.html',
     controller:  'MixesCtrl'
   });
 })
