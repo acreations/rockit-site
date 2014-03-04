@@ -61,51 +61,6 @@ body {
     }
 }
 
-/* Device CSS */
-
-.device-details {
-    position: relative;
-}
-
-.device-details .device-image {
-    position: relative; 
-    z-index: 1;
-    text-align: center;
-}
-
-.device-details .device-info-block {
-    width: 100%; 
-    z-index: 0; 
-    margin-top: -10px;
-}
-
-.device-info-block .actions {
-    float: left;
-    width: 100%; 
-    margin: 0 0 0.5em 0; 
-    padding: 0; 
-    list-style: none;
-    border-bottom: 2px solid #428BCA; 
-    border-top: 2px solid #428BCA;
-}
-
-.device-info-block .actions li a {
-    padding: 20px 30px; 
-    float: left;
-    cursor: pointer;
-}
-
-.device-info-block .actions li a:hover {
-    background-color: #E7E7E7;
-}
-
-.device-info-block .categories {
-    float: right;
-    width: 100%; 
-    margin: 0; 
-    padding: 0; 
-    list-style: none;
-}
-
 @import 'nodes/nodes.scss';
+@import 'nodes/details.scss';
 

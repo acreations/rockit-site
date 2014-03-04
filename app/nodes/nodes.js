@@ -24,7 +24,7 @@ angular.module('nodes', [
         $log.debug('Nodes repository :: success', data);
         repository.nodes = data;
 
-        $scope.presentation.groups = normalize(repository.nodes, 2);
+        $scope.presentation.groups = normalize(repository.nodes, 3);
       }, function(reason) {
         $log.warn('Nodes repository :: reject', reason);
       }, function(update) {
