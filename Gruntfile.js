@@ -31,7 +31,8 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/common/{,*/}*.js',
           '<%= yeoman.app %>/dashboard/{,*/}*.js',
-          '<%= yeoman.app %>/nodes/{,*/}*.js'
+          '<%= yeoman.app %>/nodes/{,*/}*.js',
+          '<%= yeoman.app %>/settings/{,*/}*.js'
         ],
         tasks: ['newer:jshint:all'],
         options: {
@@ -106,7 +107,8 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= yeoman.app %>/common/{,*/}*.js',
         '<%= yeoman.app %>/dashboard/{,*/}*.js',
-        '<%= yeoman.app %>/nodes/{,*/}*.js'
+        '<%= yeoman.app %>/nodes/{,*/}*.js',
+        '<%= yeoman.app %>/settings/{,*/}*.js'
       ],
       test: {
         options: {

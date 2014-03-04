@@ -1,13 +1,9 @@
 'use strict';
 
 angular.module('services', [])
-.factory('nodesRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
+.factory('settingsRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
 
-  var serviceUrl = configuration.serverUrl + 'nodes';
-
-  if(configuration.mocksEnabled) {
-    serviceUrl = '/nodes/nodes-list.json';
-  }
+  var serviceUrl = configuration.serverUrl + 'settings';
 
   return {
     list: function() {
