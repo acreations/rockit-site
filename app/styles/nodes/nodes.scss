@@ -1,0 +1,54 @@
+.node {
+
+    cursor: pointer;
+
+    .icon {
+        text-align: center;
+        position: relative;
+
+        .image {
+            position: relative;
+            z-index: 2;
+            margin: auto;
+            width: 88px;
+            height: 88px;
+            border: 8px solid white;
+            line-height: 70px;
+            border-radius: 50%;
+            background: #B8B8B8;
+            vertical-align: middle;
+
+            i {
+                font-size: 36px !important;
+                color: #fff !important;
+            }
+
+        }
+
+        .info {
+            margin-top: -24px;
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid #e0e0e0;
+            padding: 15px 0 10px 0;
+
+            h3.title {
+                font-family: "Roboto", sans-serif !important;
+                font-size: 16px;
+                color: #222;
+                font-weight: 500;
+            }
+
+            p {
+                font-family: "Roboto",sans-serif !important;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.5em;
+                margin: 20px;
+            }
+        }
+    }
+
+    .space {
+        height: 30px;
+    }
+}

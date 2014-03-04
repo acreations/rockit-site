@@ -1,26 +1,21 @@
-<div class="container-fluid">
-    <div class="container-fluid" data-ng-repeat="group in presentation.groups">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5" data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-xs-3 col-md-3 text-center">
-                            <img src="http://placehold.it/100x100" alt="bootsnipp" class="img-responsive" />
-                            <h4><small data-ng-bind="node.association.name"></small></h4>
-                        </div>
-                        <div class="col-xs-9 col-md-9 section-box">
-                            <h3 data-ng-bind="node.name"></h3>
-                            <p>&nbsp;</p>
-                            <hr />
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-6 text-right">DD</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-1"></div>
+<div class="container" data-ng-repeat="group in presentation.groups">
+  <div class="row">
+    <!-- Boxes de Acoes -->
+    <div class="col-xs-12 col-sm-6 col-lg-4" data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
+      <div class="node">                           
+        <div class="icon">
+          <div class="image">
+            <img src="http://placehold.it/70x70" alt="bootsnipp" class="img-circle" />
+          </div>
+          <div class="info">
+            <h3 class="title">{{ node.name }}<br />
+            <small data-ng-bind="node.association.name"></small></h3>
+            <hr />
+            <p>Information</p>
+          </div>
         </div>
+        <div class="space"></div>
+      </div> 
     </div>
+  </div>
 </div>

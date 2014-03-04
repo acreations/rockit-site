@@ -1,24 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-          <img src="http://placehold.it/200x200" alt="" class="img-responsive" />
-          <h4><small data-ng-bind="node.association.name"></small></h4>
-        </div>
-        <div class="col-xs-8 col-sm-8 col-md-8">
-          <h3 class="visible-md visible-lg" data-ng-bind="node.name"></h3>
-          <h4 class="visible-sm visible-xs" data-ng-bind="node.name"></h4>
-          <hr />
-          <div class="row-fluid">
-            <p class="lead">
-            <span class="glyphicon glyphicon-edit action" data-ng-click="editOpen()"></span>
-            <span class="glyphicon action" data-ng-class="{'glyphicon-star-empty': !favorite, 'glyphicon-star': favorite }" data-ng-click="toggleFavorite()"></span>
-            <span class="glyphicon glyphicon-trash action" data-ng-click="deleteConfirm()"></span>
-            </p>
-          </div>
-        </div>
+  <div class="row-fluid">
+    <div class="device-details">
+      <div class="device-image">
+        <img src="http://placehold.it/100x100" alt="{{node.association.name}} device" 
+          title="{{node.association.name}}" class="img-circle">
       </div>
+      <div class="device-info-block">
+        <h3 class="device-header text-center">{{ node.name }}<br />
+          <small data-ng-bind="node.association.name"></small>
+        </h3>
+
+        <ul class="actions">
+          <li>
+            <a data-ng-click="editOpen()">
+            <span class="glyphicon glyphicon-edit"></span>
+            </a>
+          </li>
+          <li>
+            <a data-ng-click="toggleFavorite()">
+              <span class="glyphicon" data-ng-class="{ 'glyphicon-star-empty': !favorite, 'glyphicon-star': favorite }">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a data-ng-click="deleteConfirm()">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="categories text-center">
+      <span class="label label-success">Vardagsrum</span>
+      <span class="label label-success">Kallbäck 13A</span>
     </div>
   </div>
 </div>
@@ -28,7 +42,7 @@
     <div class="page-header" ng-click="isCollapsed.details = !isCollapsed.details">
       <h3><small>Details information</small></h3>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="detail in node.detailed.data">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2" ng-repeat="detail in node.detailed.data">
       <p class="lead">
         <h5><strong>{{ detail.title | translate }}</strong></h5>
         <span data-ng-bind="detail.value"></span>
