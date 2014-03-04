@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('nodes', [
+  'nodes.services',
   'razberry'
 ])
 

@@ -11,8 +11,7 @@ angular.module('rockit', [
   'dashboard',
   'nodes',
   'mixes',
-  'settings',
-  'services'
+  'settings'
 ])
 
 .service('configuration', function() {

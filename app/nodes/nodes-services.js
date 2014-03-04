@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('services', [])
+angular.module('nodes.services', [])
 .factory('nodesRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
 
   var serviceUrl = configuration.serverUrl + 'nodes';
