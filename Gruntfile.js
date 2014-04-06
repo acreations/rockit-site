@@ -291,7 +291,11 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html',
+            'resources/**/*',
+            'common/{,*/}*.html',
+            'dashboard/{,*/}*.html',
+            'nodes/{,*/}*.html',
+            'settings/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'

@@ -1,0 +1,14 @@
+server {
+    listen 9394;
+    server_name rockit-server.com;
+
+    keepalive_timeout 5;
+
+    # path for static files
+    root /opt/apps/rockit/rockit-site/dist/;
+
+    location /static/ {
+        autoindex on;
+        alias  /opt/apps/rockit-server/static/;
+    }
+}
