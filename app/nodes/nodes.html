@@ -1,21 +1,27 @@
-<div class="container" data-ng-repeat="group in presentation.groups">
-  <div class="row">
-    <!-- Boxes de Acoes -->
-    <div class="col-xs-12 col-sm-6 col-lg-4" data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
-      <div class="node">                           
-        <div class="icon">
-          <div class="image">
-            <img src="http://placehold.it/70x70" alt="bootsnipp" class="img-circle" />
-          </div>
-          <div class="info">
-            <h3 class="title">{{ node.name }}<br />
-            <small data-ng-bind="node.association.name"></small></h3>
-            <hr />
-            <p>Information</p>
-          </div>
-        </div>
-        <div class="space"></div>
-      </div> 
-    </div>
-  </div>
+<h2>Nodes</h2>
+
+<div class="lead">
+All nodes in rockit network
 </div>
+
+<div class="row" data-ng-repeat="group in presentation.groups">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" 
+      data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
+
+      <div class="node row">
+        <div class="col-sm-3 text-center">
+          <a href="#">
+            <i class="icon fa fa-lightbulb-o fa-5x"></i>
+          </a>
+          <small class="center-block" data-ng-bind="node.association.name"></small>
+        </div>
+        <div class="info col-sm-9">
+          <h6 class="title" data-ng-bind="node.name"></h5>
+          <span class="label label-success">Vardagsrum</span>
+          <span class="label label-success">Kallebäcksvägen 13A</span>
+        </div>
+      </div>
+    </div>
+</div>
+
+

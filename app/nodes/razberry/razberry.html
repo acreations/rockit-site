@@ -1,3 +1,17 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+    <i class="icon fa fa-lightbulb-o fa-5x"></i>
+  </div>
+  <div class="col-md-10">
+    <h3 class="title">{{ node.name }}</h3>
+  </div>
+
+  
+
+</div>
+
+
+
 <div class="container">
   <div class="row-fluid">
     <div class="device-details">
@@ -69,6 +83,18 @@
             data-ng-click="activateCommand(command, 'off')"> Off</span>
         </button>
       </p>
+
+
+      <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <div class="onoffswitch-inner">
+                <div class="onoffswitch-active"><div class="onoffswitch-switch">ON</div></div>
+                <div class="onoffswitch-inactive"><div class="onoffswitch-switch">OFF</div></div>
+            </div>
+        </label>
+      </div>
+
     </div>
   </div>
 </div>
