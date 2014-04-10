@@ -1,3 +1,49 @@
+
+/* Configurations */
+
+.device-header {
+    $razberry-btn-bg-color:  #3498DB;
+    $razberry-btn-bg-border-color: #2980b9;
+
+    .button {
+        background-color: $razberry-btn-bg-color;
+        border-bottom: 0.5em solid $razberry-btn-bg-border-color;
+        cursor: pointer;
+        padding: 1em;
+        text-align: center;
+
+        &:active {
+            background-color: $razberry-btn-bg-border-color;
+        }
+
+        &:hover {
+            background-color: $razberry-btn-bg-border-color;
+        }
+    }
+
+    .menu {
+        margin: 2em 0;
+        background-color: $razberry-btn-bg-border-color;
+    }
+
+    .title {
+        line-height: 0.8em;
+        margin: 0;
+        padding: 0.45em 0;
+
+        small {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.device-commands {
+
+    .page-header, .page-header h3 {
+        margin-top: 0;
+    }
+}
+
 .device-details {
     position: relative;
 

@@ -1,4 +1,6 @@
 {
+  "COMMAND_BINARY_SUCCESS": " Command successfully run",
+  "COMMAND_BINARY_SUCCESS_TITLE": " Success",
   "application": "Application",
   "awaken": "Awaken",
   "beaming": "Beaming",

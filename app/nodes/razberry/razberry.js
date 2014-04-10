@@ -15,25 +15,34 @@ angular.module('razberry', [
   function ($scope, $log, $routeParams, $translatePartialLoader, $translate, $sce, $modal, repository) {
 
   $scope.favorite = false;
+  $scope.statuses = {};
 
   var responses = {};
 
-  $scope.activateCommand = function(command, value) {
-    $log.debug(':: Selected command with value', value);
+  var commands = {
+    'binary': function(command) {
+      repository.get(command.urls[command.values.current ? 'on':'off']).then(
+        function(data) {
+          $log.debug('Repository :: success', data);
 
-    repository.get(command.urls[value]).then(
-      function(data) {
-        $log.debug('Repository :: success', data);
+          command.values.current = data.data;
 
-        command.values.current = data.data;
+          pushStatusMessage($scope.statuses.commands, 'success', 'COMMAND_BINARY_SUCCESS_TITLE', 'COMMAND_BINARY_SUCCESS');
+            
+        }, function(reason) {
+          $log.warn('Repository :: reject', reason);
+        }, function(update) {
+          $log.info('Repository:: updates', update);
+        }
+      );
+    }
+  }
 
-      }, function(reason) {
-        $log.warn('Repository :: reject', reason);
-      }, function(update) {
-        $log.info('Repository:: updates', update);
-      }
-    );
-  };
+  $scope.clearStatus = function(status) {
+    $log.debug(":: Clear status", status);
+
+    status.messages = [];
+  }
 
   $scope.deleteConfirm = function() {
     $log.debug(':: Open confirm modal');
@@ -103,6 +112,14 @@ angular.module('razberry', [
     });
   };
 
+  $scope.onChangeCommand = function(command) {
+    if(command && commands.hasOwnProperty(command.type)) {
+      commands[command.type](command);
+    } else {
+      $log.warn(':: Command not supported', command);
+    }
+  }
+
   $scope.refreshCommandValues = function() {
     $log.debug(':: Refreshing command values');
   };
@@ -112,6 +129,14 @@ angular.module('razberry', [
 
     $scope.favorite = !$scope.favorite;
   };
+
+  var pushStatusMessage = function(status, cls, title, message) {
+    status.push({
+      'class': cls,
+      'title': title,
+      'message': message
+    });
+  }
 
   var onCreate = function() {
     $log.debug(':: Created Razberry controller');
@@ -135,6 +160,8 @@ angular.module('razberry', [
         $log.info('Repository :: updates', update);
       }
     );
+
+    $scope.statuses['commands'] = []
   };
   
   onCreate();
