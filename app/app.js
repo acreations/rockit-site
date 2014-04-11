@@ -17,7 +17,7 @@ angular.module('rockit', [
 .service('configuration', function() {
 
   this.initialize = function() {
-    this.serverUrl = 'http://zack/rockit/';
+    this.serverUrl = 'http://192.168.1.3/rockit/';
     this.mocksEnabled = false;
   };
 

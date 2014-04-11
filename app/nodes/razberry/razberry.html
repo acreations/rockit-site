@@ -1,4 +1,4 @@
-<div class="device-header row">
+<div class="device-header row" data-ng-show="node">
   <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
     <i class="icon fa fa-lightbulb-o fa-3x fa-border"></i>
   </div>
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div class="device-commands row-fluid">
+<div class="device-commands row-fluid" data-ng-show="node">
   <div class="page-header">
     <h3>
       <small>Commands</small>
@@ -53,14 +53,17 @@
   <div class="clearfix"></div>
 </div>
 
-<div class="row-fluid">
+<div class="device-details row-fluid" data-ng-show="node">
   <div class="page-header" ng-click="isCollapsed.details = !isCollapsed.details">
     <h3><small>Details information</small></h3>
   </div>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="detail in node.detailed.data">
-    <p class="lead">
-      <h5><strong>{{ detail.title | translate }}</strong></h5>
-      <span data-ng-bind="detail.value"></span>
-    </p>
+  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" ng-repeat="detail in node.detailed.data">
+    <div class="info">
+      <p class="lead">
+        <h5><strong>{{ detail.title | translate }}</strong></h5>
+        <span data-ng-bind="detail.value"></span>
+      </p>
+    </div>
   </div>
+  <div class="clearfix"></div>
 </div>
