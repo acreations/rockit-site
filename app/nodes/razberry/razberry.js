@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('razberry', [
-
-])
+angular.module('razberry', [])
 
 .config(function ($routeProvider) {
   $routeProvider.when('/nodes/razberry/:node*', {
@@ -36,13 +34,13 @@ angular.module('razberry', [
         }
       );
     }
-  }
+  };
 
   $scope.clearStatus = function(status) {
-    $log.debug(":: Clear status", status);
+    $log.debug(':: Clear status', status);
 
     status.messages = [];
-  }
+  };
 
   $scope.deleteConfirm = function() {
     $log.debug(':: Open confirm modal');
@@ -118,7 +116,7 @@ angular.module('razberry', [
     } else {
       $log.warn(':: Command not supported', command);
     }
-  }
+  };
 
   $scope.refreshCommandValues = function() {
     $log.debug(':: Refreshing command values');
@@ -136,7 +134,7 @@ angular.module('razberry', [
       'title': title,
       'message': message
     });
-  }
+  };
 
   var onCreate = function() {
     $log.debug(':: Created Razberry controller');
@@ -161,7 +159,7 @@ angular.module('razberry', [
       }
     );
 
-    $scope.statuses['commands'] = []
+    $scope.statuses.commands = [];
   };
   
   onCreate();

@@ -1,5 +1,19 @@
-<div class="container">
-  <div class="row">
-    <p data-ng-repeat="setting in settings.all">{{ setting.name }}</p>
-  </div>
+<div class="row-fluid">
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        <h2>Settings</h2>
+        <nav>
+          <ul class="nav nav-pills nav-stacked span2">
+            <li data-ng-repeat="setting in settings" data-ng-class="{ 'active': setting.active }">
+                <a href="#/settings/{{ setting.name }}"><i class="fa fa-angle-right fa-x"></i> {{ setting.name }}</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div class="col-sm-9 col-md-9 col-lg-9">
+        <h2 data-ng-bind="active.name"></h2>
+        <div class="setting row" data-ng-repeat="setting in active.settings">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><strong data-ng-bind="setting.name"></strong></div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" data-ng-bind="setting.value"></div>
+        </div>
+    </div>
 </div>

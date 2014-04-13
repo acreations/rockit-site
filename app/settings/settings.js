@@ -5,28 +5,45 @@ angular.module('settings', [
 ])
 
 .config(function ($routeProvider) {
-  $routeProvider.when('/settings', {
-    templateUrl: 'settings/settings.html',
-    controller:  'SettingsCtrl'
-  });
+  $routeProvider
+    .when('/settings/:association', {
+      templateUrl: 'settings/settings.html',
+      controller:  'SettingsCtrl'
+    })
+    .when('/settings', { redirectTo:'/settings/Rockit' })
+  ;
 })
 
-.controller('SettingsCtrl', ['$scope', '$log', 'settingsRepository',
-    function ($scope, $log, settingsRepository) {
-
-  $scope.hello = 'settings';
+.controller('SettingsCtrl', ['$scope', '$log', '$routeParams', 'settingsRepository', 'repository',
+    function ($scope, $log, $routeParams, settingsRepository, repository) {
 
   $scope.settings = {};
+  $scope.active   = {};
 
-  var repository = {};
+  var retrieveActive = function(active) {
+    if(active) {
+      repository.get(active.url).then(
+        function(success) {
+          $scope.active.settings = success.data;
+        },
+        function() {
+      });
+    }
+  };
 
   var retrieveSettings = function() {
     settingsRepository.list().then(
       function(data) {
-        $log.debug('Repository :: success', data);
-        repository.list = data;
+        angular.forEach(data, function(item) {
+          item.active = item.name === $routeParams.association;
 
-        $scope.settings.all = repository.list;
+          if(item.active) {
+            $scope.active = item;
+          }
+        });
+        $scope.settings = data;
+
+        retrieveActive($scope.active);
       }, function(reason) {
         $log.warn('Repository :: reject', reason);
       }, function(update) {
