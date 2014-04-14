@@ -122,6 +122,10 @@ angular.module('razberry', [])
     $log.debug(':: Refreshing command values');
   };
 
+  $scope.resetCommandStatuses = function() {
+    $scope.statuses.commands = [];
+  }
+
   $scope.toggleFavorite = function() {
     $log.debug(':: Toggle as favorite');
 

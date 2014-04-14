@@ -33,7 +33,7 @@
   
   <div class="alert alert-{{status.class}} alert-dismissable" data-ng-repeat="status in statuses.commands">
     <i class="fa fa-exclamation-triangle"></i>
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="resetCommandStatuses()">&times;</button>
     <strong>{{ status.title | translate }}</strong> {{status.message | translate }}
   </div>
 
