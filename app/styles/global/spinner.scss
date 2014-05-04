@@ -1,0 +1,19 @@
+.spinner {
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 50%; /* Rounds out the halo */
+    opacity: .7; /* Some subtle opacity to help blend with variable background colors */
+    margin: auto;
+}
+.spinner.small {
+    height: 24px; width: 24px; /* Pixel size of the GIF you download */
+    background: url("/resources/images/spiffygif_24x24.gif");
+}
+.spinner.medium {
+    height: 32px; width: 32px;
+    background: url("/resources/images/spiffygif_32x32.gif");
+}
+.spinner.large {
+    height: 64px; width: 64px;
+    background: url("/resources/images/spiffygif_64x64.gif");
+}
