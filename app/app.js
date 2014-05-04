@@ -17,7 +17,10 @@ angular.module('rockit', [
 .service('configuration', function() {
 
   this.initialize = function() {
-    this.serverUrl = 'http://192.168.1.3/rockit/';
+    this.server = 'http://192.168.1.3';
+    //this.server = 'http://localhost:8000';
+
+    this.serverUrl = this.server + '/rockit/';
     this.mocksEnabled = false;
   };
 

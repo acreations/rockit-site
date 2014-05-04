@@ -1,9 +1,12 @@
-<div class="row">
+<div class="row" data-ng-controller="MixesCtrl">
     <h1>When</h1>
-    <pre>
-        1. When I clicked on a button trigger ...
-        2. When a value reached
-    </pre>
+
+    <div class="spinner medium" ng-show="!when"></div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="w in when">
+        <input type="button" value="{{w.name}}" class="turquoise-flat-button">
+    </div>
+    <div class="clearfix"></div>
 
     <h1>Trigger</h1>
     <pre>
