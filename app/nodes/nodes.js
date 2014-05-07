@@ -15,8 +15,6 @@ angular.module('nodes', [
 .controller('NodesCtrl', ['$scope', '$location', '$log', 'nodesRepository',
   function ($scope, $location, $log, nodesRepository) {
 
-  $scope.presentation = {};
-
   var repository  = {};
 
   $scope.retrieveNodes = function() {
@@ -25,6 +23,7 @@ angular.module('nodes', [
         $log.debug('Nodes repository :: success', data);
         repository.nodes = data;
 
+        $scope.presentation = {};
         $scope.presentation.groups = normalize(repository.nodes, 3);
       }, function(reason) {
         $log.warn('Nodes repository :: reject', reason);

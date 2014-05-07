@@ -11,22 +11,31 @@ angular.module('mixes', [
   });
 })
 
-.controller('MixesCtrl', ['$scope', '$log', 'whenRepository', function ($scope, $log, when) {
+.controller('MixesCtrl', ['$scope', '$log', '$translatePartialLoader', '$translate', 'mixesRepository', 
+  function ($scope, $log, $translatePartialLoader, $translate, mixes) {
 
-  $scope.when;
+  $scope.selectWhen = function(item) {
+    $log.debug('Selected when', item);
+  } 
 
   var onCreate = function() {
-    retrieveWhenStatements();
+    $translatePartialLoader.addPart('mixes');
+    $translate.refresh();
+
+    retrieveCapabilities();
   };
 
-  var retrieveWhenStatements = function() {
-    when.list().then(
+  var retrieveCapabilities = function() {
+    mixes.list().then(
       function(response) {
-        $log.debug('Retrieved when statements', response)
-        $scope.when = response.data
+        $log.debug('Retrieved when statements', response);
+
+        $scope.when = response.when;
+        $scope.then = response.then;
+        $scope.finish = response.finish;
       },
       function(error) {
-        $log.error('Could not get any when statements')
+        $log.error('Could not get any when statements');
       })
   };
 

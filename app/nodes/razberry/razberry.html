@@ -1,3 +1,5 @@
+<div class="spinner medium" data-ng-show="!node"></div>
+
 <div class="device-header row" data-ng-show="node">
   <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
     <i class="icon fa fa-lightbulb-o fa-3x fa-border"></i>
@@ -30,7 +32,7 @@
       <small>Commands</small>
     </h3>
   </div>
-  
+
   <div class="alert alert-{{status.class}} alert-dismissable" data-ng-repeat="status in statuses.commands">
     <i class="fa fa-exclamation-triangle"></i>
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="resetCommandStatuses()">&times;</button>

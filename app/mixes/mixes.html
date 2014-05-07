@@ -1,21 +1,37 @@
-<div class="row" data-ng-controller="MixesCtrl">
+<div class="row mixes" data-ng-controller="MixesCtrl">
     <h1>When</h1>
 
-    <div class="spinner medium" ng-show="!when"></div>
+    <div class="spinner medium" data-ng-show="!when"></div>
+    <div class="alert alert-info" data-ng-show="when.length == 0">Cannot find any then capabilities</div>
 
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="w in when">
-        <input type="button" value="{{w.name}}" class="turquoise-flat-button">
+    <div data-ng-repeat="w in when">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in w.items">
+            <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+                <span class="btn-label"><i class="fa fa-calendar"></i></span>
+                {{ item.identifier | translate }} <br /><small>{{ w.association.name }}</small>
+            </button>
+        </div>  
     </div>
     <div class="clearfix"></div>
 
-    <h1>Trigger</h1>
-    <pre>
-        1. Trigger another action
-    </pre>
+    <h1>Then</h1>
+    
+    <div class="spinner medium" data-ng-show="!then"></div>
+    <div class="alert alert-info" data-ng-show="then.length == 0">Cannot find any then capabilities</div>
 
     <h1>Finish</h1>
-    <pre>
-        1. Set a name for it
-        2. Send email when triggered
-    </pre>
+
+    <div class="spinner medium" data-ng-show="!finish"></div>
+    <div class="alert alert-info" data-ng-show="finish.length == 0">Cannot find any finish capabilities</div>
+
+    <div data-ng-repeat="f in finish">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in f.items">
+            <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+                <span class="btn-label"><i class="fa fa-calendar"></i></span>
+                {{ item.identifier | translate }} <br /><small>{{ f.association.name }}</small>
+            </button>
+        </div>  
+    </div>
+
+    <div class="clearfix"></div>
 </div>

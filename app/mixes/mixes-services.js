@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('mixes.services', [])
-.factory('whenRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
+.factory('mixesRepository', ['$q', '$http', 'configuration', function($q, $http, configuration) {
 
-  var serviceUrl = configuration.serverUrl + 'when';
+  var serviceUrl = configuration.serverUrl + 'mixes';
 
   return {
     list: function() {

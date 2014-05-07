@@ -4,6 +4,8 @@
 All nodes in rockit network
 </div>
 
+<div class="spinner medium" data-ng-show="!presentation"></div>
+
 <div class="row" data-ng-repeat="group in presentation.groups">
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" 
       data-ng-repeat="node in group.nodes" data-ng-click="selectNode(node)">
