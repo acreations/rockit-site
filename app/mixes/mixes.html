@@ -1,6 +1,12 @@
 <div class="row mixes" data-ng-controller="MixesCtrl">
     <h1>When</h1>
 
+    <p class="lead">
+        Choose a trigger action {{holder.when.length}}
+    </p>
+
+    <hr />
+
     <div class="spinner medium" data-ng-show="!when"></div>
     <div class="alert alert-info" data-ng-show="when.length == 0">Cannot find any then capabilities</div>
 

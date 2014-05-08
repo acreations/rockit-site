@@ -1,5 +1,8 @@
 {
     "when-button": "Button",
+    "when-button-description": "Create a simple button",
+    "when-button-action-name": "Name",
+    "when-button-action-name-ph": "Button name",
     "when-schedule": "Scheduler",
 
     "finish-mailout": "Send mail"
