@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-9 col-md-9 col-lg-9">
         <h2 data-ng-bind="active.name"></h2>
-        <div class="setting row" data-ng-repeat="setting in active.settings">
+        <div class="setting row" data-ng-repeat="setting in active.settings.items">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><strong data-ng-bind="setting.name"></strong></div>
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" data-ng-bind="setting.value"></div>
         </div>

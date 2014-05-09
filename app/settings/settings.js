@@ -23,8 +23,8 @@ angular.module('settings', [
   var retrieveActive = function(active) {
     if(active) {
       repository.get(active.url).then(
-        function(success) {
-          $scope.active.settings = success.data;
+        function(data) {
+          $scope.active.settings = data;
         },
         function() {
       });

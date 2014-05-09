@@ -118,13 +118,30 @@ angular.module('razberry', [])
     }
   };
 
-  $scope.refreshCommandValues = function() {
-    $log.debug(':: Refreshing command values');
+  $scope.refresh = function() {
+    $log.debug(':: Refresh');
+
+    repository.get($routeParams.node).then(
+      function(data) {
+        $log.debug('Repository :: success', data);
+
+        responses.node = data;
+
+        $scope.node = responses.node;
+
+      }, function(reason) {
+        $log.warn('Repository :: reject', reason);
+      }, function(update) {
+        $log.info('Repository :: updates', update);
+      }
+    );
+
+    $scope.statuses.commands = [];
   };
 
   $scope.resetCommandStatuses = function() {
     $scope.statuses.commands = [];
-  }
+  };
 
   $scope.toggleFavorite = function() {
     $log.debug(':: Toggle as favorite');
@@ -148,22 +165,7 @@ angular.module('razberry', [])
 
     $sce.trustAsUrl($routeParams.node);
 
-    repository.get($routeParams.node).then(
-      function(data) {
-        $log.debug('Repository :: success', data);
-
-        responses.node = data;
-
-        $scope.node = responses.node;
-
-      }, function(reason) {
-        $log.warn('Repository :: reject', reason);
-      }, function(update) {
-        $log.info('Repository :: updates', update);
-      }
-    );
-
-    $scope.statuses.commands = [];
+    $scope.refresh();
   };
   
   onCreate();
