@@ -46,6 +46,32 @@ angular.module('mixes', [
     'finish': []
   };
 
+  $scope.updateWhen = function(selected) {
+    $log.debug('Update when', selected);
+
+    var modal = $modal.open({
+      templateUrl: 'mixes/mixes-when-edit.html',
+      controller: 'MixesEditCtrl',
+      resolve: {
+        editItem: function () {
+          return JSON.parse(JSON.stringify(selected)); // Simple clone it
+        }
+      }
+    });
+
+    modal.result.then(
+      function(edit) {
+        console.log("Updated item", edit);
+
+        selected.item = edit.item;
+        selected.actions = edit.actions;
+      },
+      function() {
+        $log.debug("When modal dismissed ... not nothing");
+      }
+    );
+  }
+
   $scope.selectWhen = function(item) {
     $log.debug('Selected when', item);
 
@@ -92,6 +118,18 @@ angular.module('mixes', [
     retrieveCapabilities();
   };
 
+  var set_icon_class_placeholder = function(container) {
+    var skipped = { 'razberry': '' };
+
+    angular.forEach(container, function(current) {
+      var skip = skipped.hasOwnProperty(current.association.entry);
+
+      angular.forEach(current.items, function(item) {
+        item.icon = skip ? current.association.entry : item.identifier;
+      });
+    });
+  }
+
   var retrieveCapabilities = function() {
     mixes.list().then(
       function(response) {
@@ -100,6 +138,10 @@ angular.module('mixes', [
         $scope.when = response.when;
         $scope.then = response.then;
         $scope.finish = response.finish;
+
+        set_icon_class_placeholder($scope.when);
+        set_icon_class_placeholder($scope.then);
+        set_icon_class_placeholder($scope.finish);
       },
       function(error) {
         $log.error('Could not get any when statements');

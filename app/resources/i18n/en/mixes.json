@@ -1,9 +1,17 @@
 {
     "when-button": "Button",
-    "when-button-description": "Create a simple button",
+    "when-button-description": "Create a simple button that acts as a container for combined functions",
     "when-button-action-name": "Name",
     "when-button-action-name-ph": "Button name",
+    "when-button-icon-class": "fa-dot-circle-o",
+
     "when-schedule": "Scheduler",
 
-    "finish-mailout": "Send mail"
+    "when-schedule-icon-class": "fa-calendar",
+
+    "finish-mailout": "Send mail",
+
+    "finish-mailout-icon-class": "fa-envelope",
+
+    "razberry-icon-class": "fa-rss"
 }
