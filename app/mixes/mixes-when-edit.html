@@ -1,15 +1,11 @@
 <div class="modal-header">
-    <h4>{{ edit.item.identifier | translate }}</h4>
+    <h4>{{ edit.item.name }}</h4>
 </div>
 <div class="modal-body">
-  <p>{{ edit.item.identifier + '-description' | translate }}</p><br />
+  <p>{{ edit.item.modifier + '-description' | translate }}</p><br />
   <form class="form-horizontal" role="form">
     <div class="form-group" data ng-repeat="(key, a) in edit.actions" data-ng-class="{ 'has-error': a.hasError }">
-      <label for="{{ key }}" class="col-sm-2 control-label">{{ edit.item.identifier + '-action-' + key | translate }}</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="{{ key }}" data-ng-required="{{ value.required }}" 
-          placeholder="{{ edit.item.identifier + '-action-' + key + '-ph' | translate }}" data-ng-model="a.data">
-      </div>
+      <div data-ng-include="'/mixes/snippets/' + edit.type + '-edit-' +  a.type +'.html'" />
     </div>
   </form>
 </div>

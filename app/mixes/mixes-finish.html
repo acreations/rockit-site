@@ -1,0 +1,21 @@
+<h1>Finish</h1>
+
+<p class="lead">
+    Finish touch ...
+</p>
+
+<hr />
+
+<div class="spinner medium" data-ng-show="!finish"></div>
+<div class="alert alert-info" data-ng-show="finish.length == 0">Cannot find any finish capabilities</div>
+
+<div data-ng-repeat="f in finish">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in f.items">
+        <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+            <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
+            {{ item.identifier | translate }} <br /><small>{{ f.association.name }}</small>
+        </button>
+    </div>  
+</div>
+
+<div class="clearfix"></div>

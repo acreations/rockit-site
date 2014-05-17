@@ -4,14 +4,24 @@
     "when-button-action-name": "Name",
     "when-button-action-name-ph": "Button name",
     "when-button-icon-class": "fa-dot-circle-o",
+    "when-button-prefix": "clicked on",
 
     "when-schedule": "Scheduler",
-
+    "when-schedule-action-cron": " ",
+    "when-schedule-description": "Schedule for trigger a event",
     "when-schedule-icon-class": "fa-calendar",
+    "when-schedule-prefix": "alarm on",
 
     "finish-mailout": "Send mail",
 
     "finish-mailout-icon-class": "fa-envelope",
 
-    "razberry-icon-class": "fa-rss"
+    "razberry-action-switchbinary": "Switch",
+    "razberry-description": "Razberry node specific configurations",
+    "razberry-icon-class": "fa-rss",
+
+    "razberry-radio-SwitchBinary-toggle": "Toggle",
+    "razberry-radio-SwitchBinary-true": "On",
+    "razberry-radio-SwitchBinary-false": "Off"
+
 }

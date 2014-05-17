@@ -1,68 +1,7 @@
 <div class="row mixes" data-ng-controller="MixesCtrl">
-    <h1>When</h1>
 
-    <p class="lead">
-        Set a when recipe, a set of criteria that needs to be verified and set before running the actual action. 
-        <br /><br />
-        Number of criteria added: {{holder.when.length}}
-    </p>
+    <div data-ng-include="'/mixes/mixes-when.html'" />
+    <div data-ng-include="'/mixes/mixes-then.html'" />
+    <div data-ng-include="'/mixes/mixes-finish.html'" />
 
-    <div class="when-criterias clearfix">
-        <div class="pull-left" data-ng-repeat="w in holder.when">
-            <span data-ng-if="$first">When</span>
-            <a class="btn" data-ng-click="updateWhen(w)">
-                <span>clicked on</span>
-                <i class="fa {{ w.item.identifier + '-icon-class' | translate }}"></i>
-                <span><strong> {{ w.actions.name.data | lowercase }}</strong></span>            
-            </a>
-
-            <span data-ng-if="!$last" class="separator">and</span>
-        </div>
-    </div>
-
-    <hr />
-
-    <div class="spinner medium" data-ng-show="!when"></div>
-    <div class="alert alert-info" data-ng-show="when.length == 0">Cannot find any then capabilities</div>
-
-    <div data-ng-repeat="w in when">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in w.items">
-            <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
-                <span class="btn-label"><i class="fa {{ item.icon + '-icon-class' | translate }}"></i></span>
-                {{ item.name }} <br /><small>{{ w.association.name }}</small>
-            </button>
-        </div>  
-    </div>
-    <div class="clearfix"></div>
-
-    <h1>Then</h1>
-    
-    <div class="spinner medium" data-ng-show="!then"></div>
-    <div class="alert alert-info" data-ng-show="then.length == 0">Cannot find any then capabilities</div>
-
-    <div data-ng-repeat="t in then">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in t.items">
-            <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
-                <span class="btn-label"><i class="fa {{ item.icon + '-icon-class' | translate }}"></i></span>
-                {{ item.name }} <br /><small>{{ t.association.name }}</small>
-            </button>
-        </div>  
-    </div>
-    <div class="clearfix"></div>
-
-    <h1>Finish</h1>
-
-    <div class="spinner medium" data-ng-show="!finish"></div>
-    <div class="alert alert-info" data-ng-show="finish.length == 0">Cannot find any finish capabilities</div>
-
-    <div data-ng-repeat="f in finish">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in f.items">
-            <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
-                <span class="btn-label"><i class="fa {{ icon + '-icon-class' | translate }}"></i></span>
-                {{ item.identifier | translate }} <br /><small>{{ f.association.name }}</small>
-            </button>
-        </div>  
-    </div>
-
-    <div class="clearfix"></div>
 </div>

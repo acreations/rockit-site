@@ -1,0 +1,33 @@
+<h1>When</h1>
+
+<p class="lead">
+    Set criterias to be triggered before action should be run.  
+</p>
+
+<div class="when-criterias clearfix">
+    <div class="pull-left" data-ng-repeat="w in holder.when">
+        <span data-ng-if="$first">When</span>
+        <a class="btn" data-ng-click="updateWhen(w)">
+            <span>{{ w.item.modifier + '-prefix' | translate }}</span>
+            <i class="fa {{ w.item.modifier + '-icon-class' | translate }}"></i>
+            <span><strong> {{ w.actions.name.data | lowercase }}</strong></span>            
+        </a>
+
+        <span data-ng-if="!$last" class="separator">and</span>
+    </div>
+</div>
+
+<hr />
+
+<div class="spinner medium" data-ng-show="!when"></div>
+<div class="alert alert-info" data-ng-show="when.length == 0">Cannot find any then capabilities</div>
+
+<div data-ng-repeat="w in when">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in w.items">
+        <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+            <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
+            {{ item.name }} <br /><small>{{ w.association.name }}</small>
+        </button>
+    </div>  
+</div>
+<div class="clearfix"></div>
