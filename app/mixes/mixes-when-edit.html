@@ -1,15 +1,41 @@
-<div class="modal-header">
-    <h4>{{ edit.item.name }}</h4>
-</div>
-<div class="modal-body">
-  <p>{{ edit.item.modifier + '-description' | translate }}</p><br />
-  <form class="form-horizontal" role="form">
-    <div class="form-group" data ng-repeat="(key, a) in edit.actions" data-ng-class="{ 'has-error': a.hasError }">
-      <div data-ng-include="'/mixes/snippets/' + edit.type + '-edit-' +  a.type +'.html'" />
+<div data-ng-show="selected.when.item">
+    <div class="row">
+        <div class="col-sm-9 pull-left">
+            <h3>{{ selected['when']['item'].name }}</h3>
+        </div>
+        <div class="col-sm-3 col-xs-5 pull-right">
+            <button type="button" class="belize-hole-flat-button" data-ng-click="scrollTo('when')">
+                Back <span><i class="fa fa-arrow-circle-o-up"></i></span>
+            </button>
+        </div>
     </div>
-  </form>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">Use</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+
+    <div class="row-fluid">
+        <div class="cols-sm-12">
+            <p>{{ selected['when']['item'].modifier + '-description' | translate }}</p>
+        </div>
+
+        <hr />
+    </div>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group" 
+            data ng-repeat="(key, a) in selected['when']['actions'].POST" 
+            data-ng-class="{ 'has-error': a.hasError }">
+          <div data-ng-include="'/mixes/snippets/when-edit-' +  a.type +'.html'" />
+        </div>
+    </form>
+
+    <div class="row saving">
+        <div class="col-sm-6">
+            <button type="button" class="orange-flat-button" data-ng-click="addMore('when', selected['when'])">
+                <span><i class="fa fa-plus-circle"></i></span> Add more
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="emerald-flat-button" data-ng-click="save('when', selected['when'], 'then')">
+                <span><i class="fa fa-plus-circle"></i></span> Continue
+            </button>
+        </div>
+    </div>
 </div>

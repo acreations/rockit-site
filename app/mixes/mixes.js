@@ -63,8 +63,8 @@ angular.module('mixes', [
   normalize($scope.edit);
 })
 
-.controller('MixesCtrl', ['$scope', '$log', '$translatePartialLoader', '$translate', '$modal', 'mixesRepository', 'repository',
-  function ($scope, $log, $translatePartialLoader, $translate, $modal, mixes, ds) {
+.controller('MixesCtrl', ['$scope', '$log', '$translatePartialLoader', '$translate', '$location', '$anchorScroll', '$modal', 'mixesRepository', 'repository',
+  function ($scope, $log, $translatePartialLoader, $translate, $location, $anchorScroll, $modal, mixes, ds) {
 
   $scope.holder = {
     'when': [],
@@ -72,43 +72,60 @@ angular.module('mixes', [
     'finish': []
   };
 
-  $scope.updateWhen = function(selected) {
-    $log.debug('Update when', selected);
+  $scope.selected = {
+    'when': {},
+    'then': {},
+    'finish': {}
+  };
 
-    var modal = $modal.open({
-      templateUrl: 'mixes/mixes-when-edit.html',
-      controller: 'MixesEditCtrl',
-      resolve: {
-        editItem: function () {
-          return JSON.parse(JSON.stringify(selected)); // Simple clone it
-        }
-      }
-    });
+  $scope.addMore = function(target, container) {
+    $scope.save(target, container);
+    $scope.scrollTo(target);
+  };
+  
+  $scope.scrollTo = function(target) {
+    if(target && $scope.selected.hasOwnProperty(target)) {
+      scrollTo('#' + target, function() { $("#" + target + "-edit").hide(); });
+    }
+  };
 
-    modal.result.then(
-      function(edit) {
-        console.log("Updated item", edit);
+  $scope.clear = function(target) {
+    $log.debug("Clearing ...", $scope.selected);
+    $scope.selected[target] = {};
+  }
 
-        selected.item = edit.item;
-        selected.actions = edit.actions;
+  $scope.save = function(target, container, nextTarget) {
+    $log.debug("Saving " + target, container);
+
+    $scope.holder[target].push(JSON.parse(JSON.stringify(container)));
+
+    if(nextTarget && $scope.selected.hasOwnProperty(nextTarget)) {
+      scrollTo("#" + nextTarget);
+      $scope.selected[target] = {};
+    }
+  };
+
+  $scope.select = function(target, item) {
+    $log.debug("Selected " + target, item);
+
+    $("#" + target + "-edit").show();
+
+    ds.get(item.url).then(
+      function(data) {
+        $scope.selected[target].item = item;
+        $scope.selected[target].actions = data.actions;
+
+        scrollTo('#' + target + '-edit');
       },
-      function() {
-        $log.debug("When modal dismissed ... not nothing");
+      function(error) {
+        console.log(error);
       }
     );
+  };
+
+  $scope.update = function(target, container) {
+    $log.debug('Update when', container);
   }
-
-  $scope.selectThen = function(item) {
-    $log.debug('Selected then', item);
-
-    select(item, 'then', 'mixes/mixes-when-edit.html', $scope.holder.then);
-  }
-
-  $scope.selectWhen = function(item) {
-    $log.debug('Selected when', item);
-
-    select(item, 'when', 'mixes/mixes-when-edit.html', $scope.holder.when);
-  } 
 
   var normalize = function(container) {
     if(container) {
@@ -149,41 +166,12 @@ angular.module('mixes', [
       })
   };
 
-  var select = function(item, type, templateUrl, holder) {
-    ds.get(item.url).then(
-      function(data) {
-        var modal = $modal.open({
-          templateUrl: templateUrl,
-          controller: 'MixesEditCtrl',
-          resolve: {
-            editItem: function () {
-              var edit = {};
-
-              edit.type = type;
-              edit.item = item;
-              edit.actions = data.actions.POST; 
-
-              return edit;
-            }
-          }
-        });
-
-        modal.result.then(
-          function(edit) {
-            console.log("Add new when item to holder", edit);
-
-            holder.push(edit);
-          },
-          function() {
-            $log.debug("When modal dismissed ... not nothing");
-          }
-        );
-      },
-      function(error) {
-        console.log(error);
-      }
-    );
-  }
+  var scrollTo = function(anchorID, callback) {
+    $('html, body').animate({ scrollTop: $(anchorID).offset().top }, {
+      duration: 800,
+      complete: callback
+    });
+  };
 
   onCreate();
 

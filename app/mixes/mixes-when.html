@@ -1,16 +1,22 @@
-<h1>When</h1>
+<h1>When
+    <div class="pull-right col-sm-3" data-ng-show="holder.when.length">
+        <button type="button" class="emerald-flat-button" data-ng-click="scrollTo('then')">
+            <span><i class="fa fa-plus-circle"></i></span> Continue
+        </button>
+    </div>
+</h1>
 
 <p class="lead">
     Set criterias to be triggered before action should be run.  
 </p>
 
 <div class="when-criterias clearfix">
-    <div class="pull-left" data-ng-repeat="w in holder.when">
+    <div class="pull-left" data-ng-repeat="h in holder.when">
         <span data-ng-if="$first">When</span>
-        <a class="btn" data-ng-click="updateWhen(w)">
-            <span>{{ w.item.modifier + '-prefix' | translate }}</span>
-            <i class="fa {{ w.item.modifier + '-icon-class' | translate }}"></i>
-            <span><strong> {{ w.actions.name.data | lowercase }}</strong></span>            
+        <a class="btn" data-ng-click="update('when', h)">
+            <span>{{ h.item.modifier + '-prefix' | translate }}</span>
+            <i class="fa {{ h.item.modifier + '-icon-class' | translate }}"></i>
+            <span><strong> {{ h.item.name | lowercase }}</strong></span>            
         </a>
 
         <span data-ng-if="!$last" class="separator">and</span>
@@ -24,7 +30,7 @@
 
 <div data-ng-repeat="w in when">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in w.items">
-        <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+        <button type="button" class="turquoise-flat-button" data-ng-click="select('when', item)">
             <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
             {{ item.name }} <br /><small>{{ w.association.name }}</small>
         </button>
