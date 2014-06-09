@@ -66,17 +66,8 @@ angular.module('mixes', [
 .controller('MixesCtrl', ['$scope', '$log', '$translatePartialLoader', '$translate', '$location', '$anchorScroll', '$modal', 'mixesRepository', 'repository',
   function ($scope, $log, $translatePartialLoader, $translate, $location, $anchorScroll, $modal, mixes, ds) {
 
-  $scope.holder = {
-    'when': [],
-    'then': [],
-    'finish': []
-  };
-
-  $scope.selected = {
-    'when': {},
-    'then': {},
-    'finish': {}
-  };
+  $scope.holder = { 'when': [], 'then': [], 'finish': [] };
+  $scope.select = { 'when': {}, 'then': {}, 'finish': {} };
 
   $scope.addMore = function(target, container) {
     $scope.save(target, container);
@@ -84,38 +75,45 @@ angular.module('mixes', [
   };
   
   $scope.scrollTo = function(target) {
-    if(target && $scope.selected.hasOwnProperty(target)) {
-      scrollTo('#' + target, function() { $("#" + target + "-edit").hide(); });
+    if(target && $scope.select.hasOwnProperty(target)) {
+      scrollTo('#' + target, function() { 
+        $("#" + target + "-edit").hide();
+        $scope.clear(target);
+      });
     }
   };
 
   $scope.clear = function(target) {
-    $log.debug("Clearing ...", $scope.selected);
-    $scope.selected[target] = {};
+    $scope.select[target] = {};
   }
 
   $scope.save = function(target, container, nextTarget) {
-    $log.debug("Saving " + target, container);
+    if(!container.saved) {
+      $log.debug("Saving " + target, container);
 
-    $scope.holder[target].push(JSON.parse(JSON.stringify(container)));
+      container.saved = true;
 
-    if(nextTarget && $scope.selected.hasOwnProperty(nextTarget)) {
+      $scope.holder[target].push(JSON.parse(JSON.stringify(container)));
+    }
+    
+    if(nextTarget && $scope.select.hasOwnProperty(nextTarget)) {
       scrollTo("#" + nextTarget);
-      $scope.selected[target] = {};
+      $scope.select[target] = {};
     }
   };
 
-  $scope.select = function(target, item) {
+  $scope.onSelect = function(target, item) {
     $log.debug("Selected " + target, item);
 
     $("#" + target + "-edit").show();
 
     ds.get(item.url).then(
       function(data) {
-        $scope.selected[target].item = item;
-        $scope.selected[target].actions = data.actions;
+        console.log($scope.select);
+        $scope.select[target].item = item;
+        $scope.select[target].actions = data.actions;
 
-        scrollTo('#' + target + '-edit');
+        //scrollTo('#' + target + '-edit');
       },
       function(error) {
         console.log(error);
@@ -124,7 +122,14 @@ angular.module('mixes', [
   };
 
   $scope.update = function(target, container) {
-    $log.debug('Update when', container);
+    $log.debug('Update ' + target, container);
+
+    var placeholder = "#" + target + "-edit";
+
+    $scope.select[target] = container;
+
+    $(placeholder).show();
+    scrollTo(placeholder);
   }
 
   var normalize = function(container) {

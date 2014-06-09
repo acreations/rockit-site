@@ -1,7 +1,7 @@
-<div data-ng-show="select.when.item">
+<div data-ng-show="selected.then.item">
     <div class="row">
         <div class="col-sm-9 pull-left">
-            <h3>{{ select.when.item.name }}</h3>
+            <h3>{{ selected.then.item.name }}</h3>
         </div>
         <div class="col-sm-3 col-xs-5 pull-right">
             <button type="button" class="belize-hole-flat-button" data-ng-click="scrollTo('when')">
@@ -12,7 +12,7 @@
 
     <div class="row-fluid">
         <div class="cols-sm-12">
-            <p>{{ select.when.item.modifier + '-description' | translate }}</p>
+            <p>{{ selected.then.item.modifier + '-description' | translate }}</p>
         </div>
 
         <hr />
@@ -20,20 +20,20 @@
 
     <form class="form-horizontal" role="form">
         <div class="form-group" 
-            data ng-repeat="(key, a) in select.when.actions.POST" 
+            data ng-repeat="(key, a) in selected.then.actions.POST" 
             data-ng-class="{ 'has-error': a.hasError }">
-          <div data-ng-include="'/mixes/snippets/when-edit-' +  a.type +'.html'" autoscroll/>
+          <div data-ng-include="'/mixes/snippets/then-edit-' +  a.type +'.html'" />
         </div>
     </form>
 
     <div class="row saving">
         <div class="col-sm-6">
-            <button type="button" class="orange-flat-button" data-ng-click="addMore('when', select.when)">
+            <button type="button" class="orange-flat-button" data-ng-click="addMore('then', selected.then)">
                 <span><i class="fa fa-plus-circle"></i></span> Add more
             </button>
         </div>
         <div class="col-sm-6">
-            <button type="button" class="emerald-flat-button" data-ng-click="save('when', select.when, 'then')">
+            <button type="button" class="emerald-flat-button" data-ng-click="save('then', selected.then, 'finish')">
                 <span><i class="fa fa-plus-circle"></i></span> Continue
             </button>
         </div>

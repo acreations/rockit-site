@@ -30,7 +30,7 @@
 
 <div data-ng-repeat="w in when">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in w.items">
-        <button type="button" class="turquoise-flat-button" data-ng-click="select('when', item)">
+        <button type="button" class="turquoise-flat-button" data-ng-click="onSelect('when', item)">
             <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
             {{ item.name }} <br /><small>{{ w.association.name }}</small>
         </button>

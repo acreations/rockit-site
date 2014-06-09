@@ -1,10 +1,10 @@
 <label for="{{ key }}" class="col-sm-2 control-label">
-    {{ selected['when']['item'].modifier + '-action-' + key | lowercase | translate }}
+    {{ select.when.item.modifier + '-action-' + key | lowercase | translate }}
 </label>
 
 <div class="col-sm-10">
     <input type="text" class="form-control" id="{{ key }}" data-ng-model="a.value"
         data-ng-if="a.type == 'string'" 
         data-ng-required="{{ a.required }}" 
-        placeholder="{{ selected['when']['item'].modifier + '-action-' + key + '-ph' | lowercase | translate }}" />
+        placeholder="{{ select.when.item.modifier + '-action-' + key + '-ph' | lowercase | translate }}" />
 </div>
