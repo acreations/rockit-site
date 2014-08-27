@@ -296,6 +296,7 @@ module.exports = function (grunt) {
             'dashboard/{,*/}*.html',
             'nodes/{,*/}*.html',
             'settings/{,*/}*.html',
+            'mixes/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
