@@ -102,6 +102,10 @@ angular.module('mixes', [
     }
   };
 
+  $scope.saveAsMix = function(item) {
+    $log.debug('Trying to save item', item);
+  }
+
   $scope.onSelect = function(target, item) {
     $log.debug("Selected " + target, item);
 
@@ -113,7 +117,7 @@ angular.module('mixes', [
         $scope.select[target].item = item;
         $scope.select[target].actions = data.actions;
 
-        //scrollTo('#' + target + '-edit');
+        scrollTo('#' + target + '-edit');
       },
       function(error) {
         console.log(error);

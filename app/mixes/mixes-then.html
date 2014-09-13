@@ -24,7 +24,7 @@
 
 <div data-ng-repeat="t in then">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in t.items">
-        <button type="button" class="turquoise-flat-button" data-ng-click="select('then',item)">
+        <button type="button" class="turquoise-flat-button" data-ng-click="onSelect('then',item)">
             <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
             {{ item.name }} <br /><small>{{ t.association.name }}</small>
         </button>

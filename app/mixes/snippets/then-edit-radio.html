@@ -1,8 +1,9 @@
 <label for="{{ key }}" class="col-sm-2 control-label">
-    {{ selected.then.item.modifier + '-action-' + key | lowercase | translate }}
+    {{ select.then.item.modifier + '-action-' + key | lowercase | translate }}
 </label>
 
 <div class="col-sm-10">
-    <select class="form-control" data-ng-if="a.type == 'radio'" 
-      data-ng-options="k as v for (k, v) in a.value" data-ng-model="a.data" />
+    <select class="form-control" data-ng-if="a.type == 'radio'" data-ng-init="a.data = '0'"
+      data-ng-options="k as v for (k, v) in a.value" data-ng-model="a.data">
+    </select>
 </div>

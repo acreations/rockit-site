@@ -11,11 +11,17 @@
 
 <div data-ng-repeat="f in finish">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="item in f.items">
-        <button type="button" class="turquoise-flat-button" data-ng-click="selectWhen(item)">
+        <button type="button" class="turquoise-flat-button" data-ng-click="onSelect('finish', item)">
             <span class="btn-label"><i class="fa {{ item.modifier + '-icon-class' | translate }}"></i></span>
             {{ item.identifier | translate }} <br /><small>{{ f.association.name }}</small>
         </button>
     </div>  
 </div>
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <button type="button" class="turquoise-flat-button" data-ng-click="saveAsMix(select)">
+        <span class="btn-label"></span>Save<small>Finishing</small>
+    </button>
+</div>  
 
 <div class="clearfix"></div>
